@@ -8,19 +8,17 @@
 </head>
 
 <body>
-    <!-- <h4 style="color: red; text-align: center; font-size: 25px; position: absolute; left: 0px; top: -30px; background-color: #fff; padding: 5px; transform: rotate(-5deg);">This To Do App has Amazing UX 😍😍😍</h4> -->
     
     <h1>Tasks List</h1>
 
     <div class="container">
         <div class="task-input">
-            <textarea id="taskInput" placeholder="Enter task description" rows="3"></textarea>
+            <textarea id="taskInput" placeholder="Enter new task" rows="3"></textarea>
             <button id="addTaskBtn"><i class="fa fa-plus margin-right"></i>Add Task</button>
         </div>
 
         <div class="archive-cont">
-            <button onclick="archiveTasks()" class="archive-btn"><i class="fa fa-archive margin-right icon"></i>Archive
-                completed tasks</button>
+            <button onclick="archiveTasks()" class="archive-btn"><i class="fa fa-archive margin-right icon"></i>Delete completed tasks</button>
         </div>
 
         <div class="tasks-container">

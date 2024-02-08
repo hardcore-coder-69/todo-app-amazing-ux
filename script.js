@@ -58,14 +58,14 @@ function renderTasks() {
         const taskItem = document.createElement('div');
         taskItem.classList.add('task-item');
         taskItem.setAttribute("id", task.id);
-        if (task.completed) {
-            taskItem.classList.add('completed');
-        }
+        // if (task.completed) {
+        //     taskItem.classList.add('completed');
+        // }
         taskItem.innerHTML = `
-          <div class="task-is">
+          <div class="task-is ${task.completed ? 'completed' : ''}">
             <i class="fa fa-thumb-tack pin ${task.completed ? 'hide' : ''}"></i>
             <input type="checkbox" onchange="toggleTaskCompleted(${index})" ${task.completed ? 'checked' : ''}>
-            <span class="${task.completed ? 'line-through' : ''}">${task.description}</span>
+            <span class="task-text ${task.completed ? 'line-through' : ''}">${task.description}</span>
           </div>
           <i class="fa fa-trash delete" onclick="deleteTask(${index}, '${task.id}')"></i>
         `;
@@ -75,7 +75,7 @@ function renderTasks() {
     if (tasks.length === 0) {
         taskList.innerHTML = `<div class="no-tasks">
             <i class="fa fa-file italic margin-right"></i>
-            No tasks found
+            No records
         </div>`
     }
 }
@@ -125,14 +125,14 @@ function renderFilteredTasks(filteredTasks) {
         const taskItem = document.createElement('div');
         taskItem.classList.add('task-item');
         taskItem.setAttribute('id', task.id);
-        if (task.completed) {
-            taskItem.classList.add('completed');
-        }
+        // if (task.completed) {
+        //     taskItem.classList.add('completed');
+        // }
         taskItem.innerHTML = `
-            <div class="task-is">
+            <div class="task-is ${task.completed ? 'completed' : ''}">
                 <i class="fa fa-thumb-tack pin ${task.completed ? 'hide' : ''}"></i>
                 <input type="checkbox" onchange="toggleTaskCompleted(${tasks.indexOf(task)})" ${task.completed ? 'checked' : ''}>
-                <span class="${task.completed ? 'line-through' : ''}">${task.description}</span>
+                <span class="task-text ${task.completed ? 'line-through' : ''}">${task.description}</span>
             </div>
             <i onclick="deleteTask(${tasks.indexOf(task)}, '${task.id}')" class="fa fa-trash delete"></i>
         `;
@@ -142,7 +142,7 @@ function renderFilteredTasks(filteredTasks) {
     if (filteredTasks.length === 0) {
         taskList.innerHTML = `<div class="no-tasks">
         <i class="fa fa-file italic margin-right"></i>
-            No tasks found
+            No records
         </div>`
     }
 }

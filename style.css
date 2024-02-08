@@ -16,11 +16,14 @@ h1 {
 
 .task-input {
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .task-input textarea {
-    font-family: Arial, sans-serif;
     flex: 1;
+    width: 98%;
+    font-family: Arial, sans-serif;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid rgb(222, 219, 219);
@@ -33,11 +36,12 @@ h1 {
 }
 
 .task-input button {
+    width: 100%;
     padding: 15px 15px;
     background-color: #1dc522;
     color: white;
     border: none;
-    border-radius: 2px;
+    border-radius: 5px;
     font-size: 20px;
     cursor: pointer;
 }
@@ -49,22 +53,22 @@ h1 {
 
 
 .archive-btn {
-    background-color: rgb(253, 170, 45);
+    background-color: rgb(251, 4, 4);
     border: 1px solid rgb(232, 211, 179);
     border-radius: 5px;
     padding: 6px 10px;
     font-size: 15px;
     cursor: pointer;
     margin-top: 25px;
-    color: #4b4a4a;
+    color: #fff;
 }
 
 .archive-btn .icon {
-    color: rgb(110, 82, 3);
+    color: #fff;
 }
 
 .archive-btn:hover {
-    background-color: rgb(228, 151, 36);
+    background-color: rgb(192, 0, 0);
     transition: all 0.3s ease-out;
 }
 
@@ -98,8 +102,8 @@ h1 {
     height: 20px;
 }
 
-.task-item.completed {
-    opacity: 0.6;
+.task-item .completed {
+    opacity: 0.4;
 }
 
 .line-through {
@@ -182,7 +186,7 @@ h1 {
 }
 
 .pin {
-    color: red;
+    color: rgb(1, 207, 32);
     font-size: 35px;
     transform: rotate(-45deg) translate(2px, -32px);
 }
