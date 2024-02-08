@@ -1,17 +1,23 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
+    opacity: 0.8;
 }
 
 .container {
     padding: 20px;
 }
 
-h1 {
-    text-align: center;
+.header {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    justify-content: center;
     background-color: #d8d7d7;
-    padding: 15px;
-    margin: 0;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .task-input {
@@ -33,6 +39,15 @@ h1 {
 
 .margin-right {
     margin-right: 10px;
+}
+
+.toggle_icon {
+    cursor: pointer;
+    font-size: 28px;
+}
+
+h1 {
+    margin: 0;
 }
 
 .task-input button {
@@ -61,6 +76,13 @@ h1 {
     cursor: pointer;
     margin-top: 25px;
     color: #fff;
+}
+
+.created_at {
+    font-size: 12px;
+    opacity: 0.5;
+    margin-top: 5px;
+    margin-left: 2px 
 }
 
 .archive-btn .icon {
@@ -120,7 +142,7 @@ h1 {
 }
 
 .filter-buttons button {
-    color: rgb(254, 254, 254);
+    color: rgb(0, 0, 0);
     border: none;
     outline: none;
     background-color: transparent;
@@ -151,6 +173,7 @@ h1 {
 }
 
 .task-is {
+    cursor: pointer;
     display: flex;
     align-items: center;
     width: 97%;

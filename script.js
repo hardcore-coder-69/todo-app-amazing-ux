@@ -2,6 +2,7 @@ const taskInput = document.getElementById('taskInput');
 const addTaskBtn = document.getElementById('addTaskBtn');
 const taskList = document.getElementById('taskList');
 const filterButtons = document.getElementById("filter-buttons");
+const toggleEl = document.getElementById("toggle_icon");
 let tasks = [];
 
 addTaskBtn.addEventListener('click', addTask);
@@ -14,6 +15,11 @@ taskInput.addEventListener('input', function () {
         addTaskBtn.style.display = 'none';
     }
 })
+
+function toggleTheme() {
+    toggleEl.classList.toggle('fa-toggle-off');
+    toggleEl.classList.toggle('fa-toggle-on');
+}
 
 function generateString(length) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -51,6 +57,11 @@ function hideThisElement(element) {
     }, 300);
 }
 
+function formatDate(str) {
+    let date = new Date(str);
+    return date.toDateString()
+}
+
 function renderTasks() {
     taskList.innerHTML = '';
 
@@ -58,14 +69,13 @@ function renderTasks() {
         const taskItem = document.createElement('div');
         taskItem.classList.add('task-item');
         taskItem.setAttribute("id", task.id);
-        // if (task.completed) {
-        //     taskItem.classList.add('completed');
-        // }
         taskItem.innerHTML = `
-          <div class="task-is ${task.completed ? 'completed' : ''}">
+          <div onclick="toggleTaskCompleted(${index})" class="task-is ${task.completed ? 'completed' : ''}">
             <i class="fa fa-thumb-tack pin ${task.completed ? 'hide' : ''}"></i>
-            <input type="checkbox" onchange="toggleTaskCompleted(${index})" ${task.completed ? 'checked' : ''}>
-            <span class="task-text ${task.completed ? 'line-through' : ''}">${task.description}</span>
+            <div>
+                <span class="task-text ${task.completed ? 'line-through' : ''}">${task.description}</span>
+                <div class="created_at">${formatDate(task.createdAt)}</div>
+            </div>
           </div>
           <i class="fa fa-trash delete" onclick="deleteTask(${index}, '${task.id}')"></i>
         `;
@@ -125,14 +135,13 @@ function renderFilteredTasks(filteredTasks) {
         const taskItem = document.createElement('div');
         taskItem.classList.add('task-item');
         taskItem.setAttribute('id', task.id);
-        // if (task.completed) {
-        //     taskItem.classList.add('completed');
-        // }
         taskItem.innerHTML = `
-            <div class="task-is ${task.completed ? 'completed' : ''}">
+            <div onclick="toggleTaskCompleted(${index})" class="task-is ${task.completed ? 'completed' : ''}">
                 <i class="fa fa-thumb-tack pin ${task.completed ? 'hide' : ''}"></i>
-                <input type="checkbox" onchange="toggleTaskCompleted(${tasks.indexOf(task)})" ${task.completed ? 'checked' : ''}>
-                <span class="task-text ${task.completed ? 'line-through' : ''}">${task.description}</span>
+                <div>
+                    <span class="task-text ${task.completed ? 'line-through' : ''}">${task.description}</span>
+                    <div class="created_at">${formatDate(task.createdAt)}</div>
+                </div>
             </div>
             <i onclick="deleteTask(${tasks.indexOf(task)}, '${task.id}')" class="fa fa-trash delete"></i>
         `;
