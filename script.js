@@ -3,6 +3,10 @@ const addTaskBtn = document.getElementById('addTaskBtn');
 const taskList = document.getElementById('taskList');
 const filterButtons = document.getElementById("filter-buttons");
 const toggleEl = document.getElementById("toggle_icon");
+const clickSound = document.getElementById('clickSound');
+const navigateSound = document.getElementById('navigateSound');
+const toggleSound = document.getElementById('toggleSound');
+const headerEl = document.getElementById('header');
 let tasks = [];
 
 addTaskBtn.addEventListener('click', addTask);
@@ -19,6 +23,40 @@ taskInput.addEventListener('input', function () {
 function toggleTheme() {
     toggleEl.classList.toggle('fa-toggle-off');
     toggleEl.classList.toggle('fa-toggle-on');
+
+    const state = toggleEl.classList.contains('fa-toggle-on') ? 'ON' : 'OFF';
+    localStorage.setItem('tasksTheme', state);
+    setTheme(state)
+}
+
+function setTheme(state) {
+    const taskItem = Array.from(document.getElementsByClassName('task-item'));
+    const noTasksEl = document.getElementById('no-tasks');
+    const tasksContainer = document.getElementById('tasks-container');
+
+    if (state == 'ON') {
+        toggleEl.classList.add('fa-toggle-on');
+        toggleEl.classList.remove('fa-toggle-off');
+
+        document.body.style.backgroundColor = '#000';
+        taskItem.forEach(el => el.classList.add('dark-item'));
+        headerEl.classList.add('dark-header');
+        noTasksEl && noTasksEl.classList.add('dark-item');
+        taskInput.classList.add('dark-textarea');
+        filterButtons.classList.add('dark-filters');
+        tasksContainer.classList.add('tasks-container-dark');
+    } else {
+        toggleEl.classList.add('fa-toggle-off');
+        toggleEl.classList.remove('fa-toggle-on');
+
+        document.body.style.backgroundColor = '#fff';
+        taskItem.forEach(el => el.classList.remove('dark-item'));
+        headerEl.classList.remove('dark-header');
+        noTasksEl && noTasksEl.classList.remove('dark-item');
+        taskInput.classList.remove('dark-textarea');
+        filterButtons.classList.remove('dark-filters');
+        tasksContainer.classList.remove('tasks-container-dark');
+    }
 }
 
 function generateString(length) {
@@ -33,7 +71,23 @@ function generateString(length) {
     return result;
 }
 
+function playSound() {
+    clickSound.currentTime = 0;
+    clickSound.play();
+}
+
+function navigatePlay() {
+    navigateSound.currentTime = 0;
+    navigateSound.play();
+}
+
+function togglePlay() {
+    toggleSound.currentTime = 0;
+    toggleSound.play();
+}
+
 function addTask() {
+    playSound();
     const taskDescription = taskInput.value;
     if (taskDescription.trim() !== '') {
         const task = {
@@ -69,10 +123,10 @@ function renderTasks() {
         const taskItem = document.createElement('div');
         taskItem.classList.add('task-item');
         taskItem.setAttribute("id", task.id);
+        // <i class="fa fa-thumb-tack pin ${task.completed ? 'hide' : ''}"></i>
         taskItem.innerHTML = `
           <div onclick="toggleTaskCompleted(${index})" class="task-is ${task.completed ? 'completed' : ''}">
-            <i class="fa fa-thumb-tack pin ${task.completed ? 'hide' : ''}"></i>
-            <div>
+          <div>
                 <span class="task-text ${task.completed ? 'line-through' : ''}">${task.description}</span>
                 <div class="created_at">${formatDate(task.createdAt)}</div>
             </div>
@@ -83,18 +137,22 @@ function renderTasks() {
     });
 
     if (tasks.length === 0) {
-        taskList.innerHTML = `<div class="no-tasks">
+        taskList.innerHTML = `<div class="no-tasks" id="no-tasks">
             <i class="fa fa-file italic margin-right"></i>
             No records
         </div>`
     }
+
+    setTheme(localStorage.getItem('tasksTheme'));
 }
 function toggleTaskCompleted(index) {
+    togglePlay();
     tasks[index].completed = !tasks[index].completed;
     renderTasks();
 }
 
 function deleteTask(index, id) {
+    playSound();
     const element = document.getElementById(id);
     hideThisElement(element)
     tasks.splice(index, 1);
@@ -104,6 +162,7 @@ function deleteTask(index, id) {
 }
 
 function filterTasks(filter) {
+    navigatePlay();
     let filteredTasks = [];
     if (filter === 'all') {
         filteredTasks = tasks;
@@ -135,9 +194,9 @@ function renderFilteredTasks(filteredTasks) {
         const taskItem = document.createElement('div');
         taskItem.classList.add('task-item');
         taskItem.setAttribute('id', task.id);
+        // <i class="fa fa-thumb-tack pin ${task.completed ? 'hide' : ''}"></i>
         taskItem.innerHTML = `
             <div onclick="toggleTaskCompleted(${index})" class="task-is ${task.completed ? 'completed' : ''}">
-                <i class="fa fa-thumb-tack pin ${task.completed ? 'hide' : ''}"></i>
                 <div>
                     <span class="task-text ${task.completed ? 'line-through' : ''}">${task.description}</span>
                     <div class="created_at">${formatDate(task.createdAt)}</div>
@@ -149,11 +208,13 @@ function renderFilteredTasks(filteredTasks) {
     });
 
     if (filteredTasks.length === 0) {
-        taskList.innerHTML = `<div class="no-tasks">
+        taskList.innerHTML = `<div class="no-tasks" id="no-tasks">
         <i class="fa fa-file italic margin-right"></i>
             No records
         </div>`
     }
+
+    setTheme(localStorage.getItem('tasksTheme'));
 }
 
 function archiveTasks() {

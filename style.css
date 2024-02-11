@@ -5,19 +5,28 @@ body {
 }
 
 .container {
-    padding: 20px;
+    padding: 5px;
 }
 
 .header {
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
-    justify-content: center;
+    justify-content: space-between;
     background-color: #d8d7d7;
     padding-left: 35px;
     padding-right: 35px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.no-tasks {
+    text-align: center;
+    background-color: #e6e6e6;
+    padding: 20px;
+    border-radius: 5px;
+    font-style: italic;
+    font-size: 20px;
+    margin-bottom: 5px;
 }
 
 .task-input {
@@ -31,10 +40,16 @@ body {
     width: 98%;
     font-family: Arial, sans-serif;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: -3px;
     border: 1px solid rgb(222, 219, 219);
     border-radius: 5px;
     font-size: 20px;
+}
+
+textarea.dark-textarea {
+    background-color: #282828;
+    border: 1px solid rgb(66, 66, 66);
+    color: lightgrey;
 }
 
 .margin-right {
@@ -53,16 +68,16 @@ h1 {
 .task-input button {
     width: 100%;
     padding: 15px 15px;
-    background-color: #1dc522;
-    color: white;
+    background-color: #009f05;
     border: none;
+    color: white;
     border-radius: 5px;
     font-size: 20px;
     cursor: pointer;
 }
 
 .task-input button:hover {
-    background-color: #19a81e;
+    background-color: #00b506;
     transition: all 0.3s ease-out;
 }
 
@@ -82,7 +97,7 @@ h1 {
     font-size: 12px;
     opacity: 0.5;
     margin-top: 5px;
-    margin-left: 2px 
+    margin-left: 2px
 }
 
 .archive-btn .icon {
@@ -100,22 +115,29 @@ h1 {
 }
 
 .task-list {
-    margin-top: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
+    margin-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .task-item {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     background-color: rgb(234, 231, 231);
     padding: 15px;
     font-size: 20px;
     border-radius: 2px;
+}
+
+.dark-item {
+    background-color: #282828;
+    color: rgb(226, 226, 226);
+}
+
+.dark-header {
+    background-color: #393939;
+    color: rgb(226, 226, 226);
 }
 
 .task-item input[type="checkbox"] {
@@ -132,10 +154,14 @@ h1 {
     text-decoration: line-through;
 }
 
+#addTaskBtn {
+    margin-top: 15px;
+}
+
 .filter-buttons {
     display: flex;
     margin-top: 10px;
-    background-color: #9f9e9e;
+    background-color: rgb(234, 231, 231);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -160,6 +186,24 @@ h1 {
     background-color: rgb(207, 207, 207);
 }
 
+/* DARK */
+.dark-filters {
+    background-color: #282828;
+}
+
+.dark-filters button {
+    color: lightgrey;
+    background-color: transparent;
+}
+
+.dark-filters button:focus {
+    background-color: #282828;
+}
+
+.dark-filters button.active {
+    background-color: #3f3f3f;
+}
+
 .archive-cont {
     text-align: right;
     margin-top: 12px;
@@ -169,7 +213,12 @@ h1 {
     border-left: 2px solid rgb(234, 233, 233);
     border-right: 2px solid rgb(234, 233, 233);
     border-bottom: 2px solid rgb(234, 233, 233);
-    padding-bottom: 10px;
+}
+
+.tasks-container-dark {
+    border-left: 2px solid #3f3f3f;
+    border-right: 2px solid #3f3f3f;
+    border-bottom: 2px solid #3f3f3f;
 }
 
 .task-is {
@@ -195,21 +244,12 @@ h1 {
     transition: all 0.1s ease-out;
 }
 
-.no-tasks {
-    text-align: center;
-    background-color: #e6e6e6;
-    padding: 20px;
-    border-radius: 5px;
-    font-style: italic;
-    font-size: 20px;
-}
-
 .italic {
     font-style: italic;
 }
 
 .pin {
-    color: rgb(1, 207, 32);
+    color: rgb(0, 92, 14);
     font-size: 35px;
     transform: rotate(-45deg) translate(2px, -32px);
 }
@@ -232,208 +272,3 @@ h1 {
         margin-bottom: 10px;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

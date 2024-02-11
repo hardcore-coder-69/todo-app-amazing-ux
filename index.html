@@ -10,10 +10,10 @@
 
 <body>
     
-    <div class="header">
+    <div class="header" id="header">
         <h1>Tasks List</h1>
-        <div class="icon_container">
-            <!-- <i onclick="toggleTheme()" id="toggle_icon" class="fa fa-toggle-off toggle_icon"></i> -->
+        <div class="icon_container" title="Toggle theme">
+            <i onclick="toggleTheme()" id="toggle_icon" class="fa fa-toggle-off toggle_icon"></i>
         </div>
     </div>
 
@@ -23,20 +23,25 @@
             <button id="addTaskBtn"><i class="fa fa-plus margin-right"></i>Add Task</button>
         </div>
 
-<!--         <div class="archive-cont">
+        <!-- <div class="archive-cont">
             <button onclick="archiveTasks()" class="archive-btn"><i class="fa fa-archive margin-right icon"></i>Delete completed tasks</button>
         </div> -->
 
-        <div class="tasks-container">
+        
+        <div class="tasks-container" id="tasks-container">
             <div class="filter-buttons" id="filter-buttons">
                 <button id="all" class="active" onclick="filterTasks('all')">All</button>
                 <button id="pending" onclick="filterTasks('pending')">Pending</button>
                 <button id="completed" onclick="filterTasks('completed')">Completed</button>
             </div>
-
+            
             <div class="task-list" id="taskList">
             </div>
         </div>
+        
+        <audio id="clickSound" src="assets/click.mp3"></audio>
+        <audio id="navigateSound" src="assets/navigate-click.mp3"></audio>
+        <audio id="toggleSound" src="assets/toggle-click.mp3"></audio>
     </div>
 
 
