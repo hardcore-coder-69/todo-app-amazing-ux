@@ -21,6 +21,7 @@ taskInput.addEventListener('input', function () {
 })
 
 function toggleTheme() {
+    togglePlay();
     toggleEl.classList.toggle('fa-toggle-off');
     toggleEl.classList.toggle('fa-toggle-on');
 
