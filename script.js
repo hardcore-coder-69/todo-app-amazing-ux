@@ -238,4 +238,8 @@ function saveTasks() {
 window.addEventListener('load', loadSavedTasks);
 
 // Save tasks whenever tasks array is updated
-window.addEventListener('beforeunload', saveTasks);
+// window.addEventListener('beforeunload', saveTasks);
+window.addEventListener('beforeunload', function(event) {
+    saveTasks():
+    window.location.reload();
+});
