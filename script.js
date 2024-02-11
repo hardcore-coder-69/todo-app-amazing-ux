@@ -224,10 +224,9 @@ function archiveTasks() {
 
 function loadSavedTasks() {
     const savedTasks = JSON.parse(localStorage.getItem('tasks'));
-    if (savedTasks) {
-        tasks = savedTasks;
-        renderTasks();
-    }
+    if (savedTasks) tasks = savedTasks;
+    else tasks = [];
+    renderTasks();
 }
 
 function saveTasks() {
