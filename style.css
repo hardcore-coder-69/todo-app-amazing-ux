@@ -213,6 +213,8 @@ h1 {
     border-left: 2px solid rgb(234, 233, 233);
     border-right: 2px solid rgb(234, 233, 233);
     border-bottom: 2px solid rgb(234, 233, 233);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .tasks-container-dark {
